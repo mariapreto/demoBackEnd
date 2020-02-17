@@ -1,0 +1,10 @@
+button:hover {
+    background-color: #cfd8dc;
+  }
+  
+  button.delete {
+    position: relative;
+    left: 45%;
+    background-color: gray !important;
+    color: white;
+  }

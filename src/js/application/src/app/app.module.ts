@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { PatientFormComponent } from './patient-form/patient-form.component';
 import { PatientService } from './service/patient-service.service';
+import { PatientSearchComponent } from './patient-search/patient-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PatientListComponent,
-    PatientFormComponent
+    PatientFormComponent,
+    PatientSearchComponent
   ],
   imports: [
     BrowserModule,

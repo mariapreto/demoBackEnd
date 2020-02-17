@@ -18,4 +18,9 @@ export class PatientListComponent implements OnInit {
       this.patients = data;
     });
   }
+
+  delete(patient: Patient): void {
+    this.patients = this.patients.filter(h => h !== patient);
+    this.patientService.deletePatient(Number(patient.id)).subscribe();
+  }
 }

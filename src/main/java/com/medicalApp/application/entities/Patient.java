@@ -38,6 +38,6 @@ public class Patient {
     
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", age=" + age + '}';
+        return "Patient{" + "id=" + id + ", name=" + name + ", age=" + age + '}';
     }
 }
