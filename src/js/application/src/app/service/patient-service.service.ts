@@ -46,19 +46,9 @@ export class PatientService {
      return this.http.post<Patient>(this.patientsUrl, patient);
    }
   
-   /** DELETE: delete the patient from the server
-   delete (patient : Patient ): Observable<Patient> {
-    const id = typeof patient === 'number' ? patient : patient.id;
-    const url = `${this.patientsUrl}/${id}`;
-
-    //return this.http.delete<Patient>(this.patientsUrl, patient);
-    return this.http.delete<Patient>(url, this.httpOptions).pipe(
-        catchError(this.handleError<Patient>('deletePatient'))
-    );
-  } */
-
-  deletePatient(id: number): Observable<Patient> {
-    return this.http.post<Patient>(this.patientsUrl, `deletePatient id=${id}`);
+  deletePatient(patient: Patient): Observable<Patient> {
+    const url = `${this.patientsUrl}/delete/${patient.id}`;
+    return this.http.post<Patient>(url, patient, this.httpOptions);
   }
 
     /**

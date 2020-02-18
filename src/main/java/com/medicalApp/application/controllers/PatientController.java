@@ -26,8 +26,8 @@ public class PatientController {
     }
 
    @GetMapping("/patient")
-    public Patient getPatient(long id) {
-        return patientRepository.findById(id).orElse(null);
+    public Patient getPatient(@RequestBody int id) {
+        return patientRepository.findById(Long.valueOf(id)).orElse(null);
     }
 
     @PostMapping("/patients")
@@ -35,11 +35,9 @@ public class PatientController {
         patientRepository.save(patient);
     }
 
-
-
-    @PostMapping("/delete/{patientId}")
-    void deletePatient(@RequestBody long id){
-        Patient patient = getPatient(id);
+    @PostMapping("/patients/delete/{patientId}")
+    void deletePatient(@RequestBody Patient patient){
+       // Patient patient = getPatient(id);
         patientRepository.delete(patient);
     }
 }
