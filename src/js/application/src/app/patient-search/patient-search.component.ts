@@ -22,10 +22,13 @@ export class PatientSearchComponent implements OnInit {
 
   // Push a search term into the observable stream.
   search(term: string): void {
-    this.searchTerms.next(term);
+    debugger;
+    //this.searchTerms.next(term);
+    this.patientService.searchPatients(term).subscribe();
   }
 
   ngOnInit(): void {
+    //debugger;
     this.patients$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),

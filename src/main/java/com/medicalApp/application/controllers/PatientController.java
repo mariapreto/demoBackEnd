@@ -4,7 +4,6 @@ import com.medicalApp.application.entities.Patient;
 import com.medicalApp.application.repositories.PatientRepository;
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,8 +35,13 @@ public class PatientController {
     }
 
     @PostMapping("/patients/delete/{patientId}")
-    void deletePatient(@RequestBody Patient patient){
-       // Patient patient = getPatient(id);
+    void deletePatient(@RequestBody int id){
+        Patient patient = getPatient(id);
         patientRepository.delete(patient);
+    }
+
+    @GetMapping("/patients/?name={term}")
+    public List<Patient> searchPatients(@RequestBody String term){
+        return (List<Patient>) patientRepository.findAll();
     }
 }

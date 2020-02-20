@@ -37,18 +37,17 @@ export class PatientService {
         // if not search term, return empty patient array.
         return of([]);
       }
-      return this.http.get<Patient[]>(`${this.patientsUrl}/?name=${term}`).pipe(
-        catchError(this.handleError<Patient[]>('searchPatient', []))
-      );
+      const url = `${this.patientsUrl}/?name=${term}`;
+      return this.http.get<Patient[]>(url);
     }
 
    public save(patient: Patient) {
      return this.http.post<Patient>(this.patientsUrl, patient);
    }
   
-  deletePatient(patient: Patient): Observable<Patient> {
-    const url = `${this.patientsUrl}/delete/${patient.id}`;
-    return this.http.post<Patient>(url, patient, this.httpOptions);
+  deletePatient(patientId: number): Observable<Patient> {
+    const url = `${this.patientsUrl}/delete/${patientId}`;
+    return this.http.post<Patient>(url, patientId, this.httpOptions);
   }
 
     /**
